@@ -1,0 +1,36 @@
+<div class="list-container">
+     <div class="list-header">
+       <h2>Products</h2>
+       <button (click)="onAdd()">+ Add Product</button>
+     </div>
+   
+     <div *ngIf="loading">Loading...</div>
+     <div *ngIf="error">{{ error }}</div>
+   
+     <table *ngIf="!loading && products.length" class="product-table">
+       <thead>
+         <tr>
+           <th>Name</th>
+           <th class="col-price">Price</th>
+           <th>Description</th>
+           <th class="col-actions"></th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let p of products">
+           <td>{{ p.name }}</td>
+           <td class="col-price">₹ {{ p.price }}</td>
+           <td>{{ p.description }}</td>
+           <td class="col-actions">
+             <button (click)="onEdit(p._id)">Edit</button>
+             <button class="danger" (click)="onDelete(p._id)">Delete</button>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   
+     <div *ngIf="!loading && !products.length">
+       No products found. Click "Add Product" to create one.
+     </div>
+   </div>
+   

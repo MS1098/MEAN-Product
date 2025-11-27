@@ -1,0 +1,36 @@
+<div class="form-container">
+     <h2>{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h2>
+   
+     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+       <div class="form-row">
+         <label for="name">Name</label>
+         <input id="name" formControlName="name" />
+         <div class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+           Name is required
+         </div>
+       </div>
+   
+       <div class="form-row">
+         <label for="price">Price</label>
+         <input id="price" type="number" formControlName="price" />
+         <div class="error" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+           Price must be a non-negative number
+         </div>
+       </div>
+   
+       <div class="form-row">
+         <label for="description">Description</label>
+         <textarea id="description" rows="3" formControlName="description"></textarea>
+       </div>
+   
+       <div class="actions">
+         <button type="submit" [disabled]="form.invalid">
+           {{ isEditMode ? 'Update' : 'Create' }}
+         </button>
+         <button type="button" class="secondary" (click)="onCancel()">
+           Cancel
+         </button>
+       </div>
+     </form>
+   </div>
+   
