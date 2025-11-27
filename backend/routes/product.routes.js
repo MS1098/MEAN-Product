@@ -1,9 +1,8 @@
-// backend/routes/product.routes.js
+
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/product.model");
 
-// CREATE
 router.post("/", async (req, res) => {
   try {
     const product = await Product.create(req.body);
@@ -13,7 +12,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// READ ALL
+
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
@@ -23,7 +22,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// READ ONE
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -34,7 +32,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// UPDATE
 router.put("/:id", async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -49,7 +46,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE
 router.delete("/:id", async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
