@@ -37,3 +37,14 @@ npm install
 ▶ Run Angular
 
 ng serve --open
+
+
+🍃 Product CRUD API (MongoDB)
+
+| Method | API Endpoint        | Description       |
+| ------ | ------------------- | ----------------- |
+| GET    | `/api/products`     | List all products |
+| GET    | `/api/products/:id` | Get product by ID |
+| POST   | `/api/products`     | Add a product     |
+| PUT    | `/api/products/:id` | Update product    |
+| DELETE | `/api/products/:id` | Delete product    |
